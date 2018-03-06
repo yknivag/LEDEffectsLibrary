@@ -11,9 +11,9 @@
 class LEDEffect
 {
   public:
-    LEDEffect(int pin);
-    void heartbeat();
-    void breathe();
+    LEDEffect(int pin, int pwmMin, int pwmMax);
+    void heartbeat(int flashBeats = 1, int groupedAs = 1, int bpm = 60);
+    void breathe(int duration = 5454);
   private:
     int _pin;
     int _pwmMin;

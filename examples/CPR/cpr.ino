@@ -19,24 +19,17 @@
 
 LEDEffect ledeffect(9, 5, 255);
 
-void setup()
-{
-  Serial.begin(115200);
-
-/*The breathe method takes one optional value:
-  1. The value in milliseconds of the total duration of the breath.
-     - If not supplied this will be 5454ms which equates to a standard breathing
-       rate of 11 breaths per minute.
-     - To specify this value from a given breaths per minute call see the slow breaths example.
-     - NB: This is a blocking call and takes the number of milliseconds specified to return. */
   /*CPR
       5 heartbeats followed by 3 long breaths, repeated.
       These values can be adjusted here */
 
   int numberBreaths = 3;
-  int breathDuration = 60000/5;         //Number of milliseconds in a minute divided by number of breaths per minute.
+  int breathDuration = 333;         //Three breaths per second.
   int numberHeatBeats = 5;
   int heartRate = 85;
+
+void setup()
+{
 }
 
 void loop()

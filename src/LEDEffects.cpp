@@ -9,13 +9,13 @@
 LEDEffect::LEDEffect(int pin, int pwmMin = 5, int pwmMax = 255) {
   pinMode(pin, OUTPUT);
   _pin = pin;
-  _pmwMax = pwmMax;
+  _pwmMax = pwmMax;
   _pwmMin = pwmMin;
-  _pwmMid = pwmMin + ((pwmMax - pwmMin) / 2));
+  _pwmMid = _pwmMin + ((_pwmMax - _pwmMin) / 2);
 }
 
-void LEDEffect::heartbeat(int flashBeats  = 1, int groupedAs = 1, int bpm = 60) {
-  int periodTime = (60000 / bpm) / 6);
+void LEDEffect::heartbeat(int flashBeats, int groupedAs, int bpm) {
+  int periodTime = ((60000 / bpm) / 6);
   int shortPeriodTime = periodTime / 3;
   int downDelayTime = (periodTime * 2) / (_pwmMid - _pwmMin);
   for (int i = 0; i < flashBeats; i += 1) {
@@ -44,7 +44,7 @@ void LEDEffect::heartbeat(int flashBeats  = 1, int groupedAs = 1, int bpm = 60) 
 }
 
 //5454ms gives a breath rate of 11 breaths per minute if called continuously
-void LEDEffect::breathe(int duration = 5454) {
+void LEDEffect::breathe(int duration) {
   int periodTime = duration / 7;
   int upDelayTime = (periodTime * 2)/ (_pwmMax - _pwmMin);
   int downDelayTime = (periodTime * 3)/ (_pwmMax - _pwmMin);
