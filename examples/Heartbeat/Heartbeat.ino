@@ -37,17 +37,22 @@ void loop()
      - NB: This is a blocking call, it will return only after (60000/heartrate) milliseconds. */
 
   //Single Beat
-  Serial.print("Single Beat");
+  Serial.println("Single Beat");
   ledeffect.heartbeat();
   delay (250);
 
   //Double Beat
-  Serial.print("Double Beat");
+  Serial.println("Double Beat");
   ledeffect.heartbeat(2,2);
   delay (250);
 
   //Fast Beats
-  Serial.print("6 Fast Beats (85bpm)");
+  Serial.println("6 Fast Beats (85bpm)");
   ledeffect.heartbeat(6, 1, 85);
+  delay (250);
+
+  //Fast Double Beats
+  Serial.println("6 Fast Beats (85bpm) Grouped as doubles");
+  ledeffect.heartbeat(6, 2, 85);
   delay (250);
 }

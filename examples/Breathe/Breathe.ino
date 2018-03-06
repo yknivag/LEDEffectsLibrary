@@ -31,7 +31,7 @@ void setup()
      - NB: This is a blocking call and takes the number of milliseconds specified to return. */
 
   //Single Breath
-  Serial.print("Standard Breath");
+  Serial.println("Standard Breath");
   ledeffect.breathe();
   delay (250);
 
@@ -41,13 +41,13 @@ void setup()
   delay (250);
 
   //Slow Breath
-  Serial.print("Slow Breath (5bpm)");
+  Serial.println("Slow Breath (5bpm)");
   int duration = 60000 / 5;         //Number of milliseconds in a minute divided by number of breaths per minute.
   ledeffect.breathe(duration);
   delay (250);
 
   //Continuous Breathing will now run in the loop
-  Serial.print("Continuous Breathing");
+  Serial.println("Continuous Breathing");
 }
 
 void loop()
