@@ -13,7 +13,10 @@ class LEDEffect
   public:
     LEDEffect(int pin, int pwmMin, int pwmMax);
     void heartbeat(int flashBeats = 1, int groupedAs = 1, int bpm = 60);
-    void breathe(int duration = 5454);
+    void breath(int duration = 5454);   //5454ms gives a breath rate of 11 breaths per minute if called continuously
+    void breathe(int breaths = 1, int bpm = 11);
+    void groupedBreathe(int breaths = 1, int groupedAs = 1, int bpm = 11);
+    void breatheDelay(int duration, int bpm = 11);
   private:
     int _pin;
     int _pwmMin;

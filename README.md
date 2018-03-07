@@ -17,7 +17,9 @@ The library expects an LED (and appropriate resistor) at the PWM capable PIN spe
 
 ## Features
 
-At this time there are two effects in the library - it is anticipated that this may grow in time although it is deliberately limited to effects possible with a single LED.
+At this time there are five effects in the library - it is anticipated that this may grow in time although it is deliberately limited to effects possible with a single LED.
+
+##Usage
 
 ### Include
 
@@ -35,7 +37,9 @@ eg *LEDEffect ledeffect(9, 5, 255);*
 
 ### heartbeat()
 
-The heartbeat method takes three optional values:
+*void heartbeat(int flashBeats = 1, int groupedAs = 1, int bpm = 60);*
+
+The heartbeat() method takes three optional values:
 1. The number of beats to flash (defaults to 1).
    - If using the second value then for the best visual effect this one should be divisible by that.
 2. The number of beats to group together (defaults to 1).
@@ -44,22 +48,55 @@ The heartbeat method takes three optional values:
 3. The heartrate in beats per minute (defaults to 60).
    - NB: This is a blocking call, it will return only after (60000/heartrate) milliseconds.
 
-### breathe()
+### breath()
 
-The breathe method takes one optional value:
+*void breath(int duration = 5454);*
+
+The breath() method takes one optional value:
   1. The value in milliseconds of the total duration of the breath.
      - If not supplied this will be 5454ms which equates to a standard breathing
        rate of 11 breaths per minute.
      - To specify this value from a given breaths per minute call see the slow breaths example.
      - NB: This is a blocking call and takes the number of milliseconds specified to return.
 
+### breathe()
+
+*void breathe(int breaths = 1, int bpm = 11);*
+
+Distinct from *breath()* in that it takes a number of breaths and breath rate as opposed to just outputting a single breath. **Note this is still a blocking function and will block for as long as it is active.** If you wish to do something between breaths then use *breath()*. The "Slow Breath" code in the "Breath" example shows how to do this for a given respiratory rate.
+
+The breathe() method takes two optional values:
+    1. The value in milliseconds of the total duration of the breath.
+       - If not supplied this will be 1.
+       - NB: This is a blocking call and takes the entire duration to return.
+    2. The breathing rate in breaths per minute.
+       - If not specified this defaults to 11 as an average human respiratory rate.
+
+### groupedBreathe()
+
+*void groupedBreathe(int breaths = 1, int groupedAs = 1, int bpm = 11);*
+
+### breatheDelay()
+
+*void breatheDelay(int duration, int bpm = 11);*
+
+Designed to provide visual feedback to the user during long *delay()* statements this method takes 1 mandatory and 1 optional parameter. The code is designed such that it will always wait for the time specified and will adjust (if necessary) the bpm slightly to ensure that only full breaths are shown. The delays and breaths shown may be subject to slight rounding errors.
+
 ## Examples
 
-There are 4 fully commented examples.
+There are 6 fully commented examples.
+
+### Breath
+
+Demonstrates the *breath()* method with a variety of different breathing options one after another and then breathes indefinitely. Outputs to the serial monitor which example is currently being shown.
 
 ### Breathe
 
-Demonstrates the *breathe()* method with a variety of different breathing options one after another and then breathes indefinitely. Outputs to the serial monitor which example is currently being shown.
+Demonstrates both *breathe()* and *groupedBreathe()* alternatively.
+
+### BreatheDelay
+
+A very simple example, this is a slow version of the blink sketch using *breatheDelay()* instead of *delay()*. It requires 2 LEDs, one to blink and one to breathe. This is not an ideal demostration, but it covers the syntax. A real-life example may be for instance breathing an LED for a given time whilst a motor is running or whilst a door catch is being held open etc.
 
 ### Heartbeat
 
@@ -67,7 +104,7 @@ Demonstrates the *heartbeat()* method by cycling through a number of possible pa
 
 ### CPR
 
-Demonstrates how to use both methods together on a single LED.
+Demonstrates how to use the breathe and heartbeat methods together on a single LED.
 
 ### TwoLEDs
 

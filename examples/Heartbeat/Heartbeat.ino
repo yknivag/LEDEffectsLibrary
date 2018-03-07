@@ -26,7 +26,7 @@ void setup()
 
 void loop()
 {
-/*The heartbeat method takes three optional values:
+/*The heartbeat() method takes three optional values:
   1. The number of beats to flash (defaults to 1).
      - If using the second value then for the best visual effect this one should be
        divisible by that.

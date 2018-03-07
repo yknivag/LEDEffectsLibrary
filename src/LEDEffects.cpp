@@ -24,14 +24,10 @@ void LEDEffect::heartbeat(int flashBeats, int groupedAs, int bpm) {
     analogWrite(_pin, _pwmMin);
     delay(shortPeriodTime * 2);
     analogWrite(_pin, _pwmMid);
-
-    //fade out from half to min in increments of 5 points:
     for(int fadeValue = _pwmMid; fadeValue >=_pwmMin; fadeValue--) {
       analogWrite(_pin, fadeValue);
-      //wait for 20 milliseconds to see the dimming effect
       delay(downDelayTime);
     }
-    //short delay to make up 1000 milli-seconds (60 bpm)
     if (i % groupedAs != 0) {
       delay(periodTime);
     }
@@ -43,8 +39,7 @@ void LEDEffect::heartbeat(int flashBeats, int groupedAs, int bpm) {
   analogWrite(_pin, 0);
 }
 
-//5454ms gives a breath rate of 11 breaths per minute if called continuously
-void LEDEffect::breathe(int duration) {
+void LEDEffect::breath(int duration) {
   int periodTime = duration / 7;
   int upDelayTime = (periodTime * 2)/ (_pwmMax - _pwmMin);
   int downDelayTime = (periodTime * 3)/ (_pwmMax - _pwmMin);
@@ -57,5 +52,49 @@ void LEDEffect::breathe(int duration) {
     delay(downDelayTime);
   }
   delay(periodTime * 2);
+  analogWrite(_pin, 0);
 }
 
+void LEDEffect::breathe(int breaths, int bpm) {
+  int breathTime = (60000 / bpm);
+  for(i = 0; i < breaths; i++) {
+    breath(breathTime);
+  }
+}
+
+void LEDEffect::breatheDelay(int duration, int bpm) {
+  int idealBreathTime = 60000 / bpm;
+  int breaths = 1;
+  if (idealBreathTime < duration) {
+    breaths = duration % idealBreathTime;
+  }
+  int realBreathTime = duration / breaths;
+  for(int i = 0; i < breaths; i++) {
+    breath(realBreathTime);
+  }
+}
+
+void LEDEffect::groupedBreathe(int breaths, int groupedAs, int bpm) {
+  int breathTime = (60000 / bpm);
+  int periodTime = breathTime / 7;
+  int upDelayTime = (periodTime * 2)/ (_pwmMax - _pwmMin);
+  int downDelayTime = (periodTime * 3)/ (_pwmMax - _pwmMin);
+  for (int n = 0; n < breaths; n++) {
+    for (int i = (_pwmMin - 1); i < _pwmMax; i++) {
+      analogWrite(_pin, i);
+      delay(upDelayTime);
+    }
+    for (int j = (_pwmMax - 1); j > _pwmMin; j--) {
+      analogWrite(_pin, j);
+      delay(downDelayTime);
+    }
+    if (n % groupedAs != 0) {
+      delay(periodTime);
+    }
+    else {
+      int wait = (periodTime * 2) + (groupedAs * periodTime);
+      delay(wait);
+    }
+  }
+  analogWrite(_pin, 0);
+}

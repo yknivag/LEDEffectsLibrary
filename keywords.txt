@@ -1,3 +1,6 @@
 LEDEffect	KEYWORD1
 heartbeat	KEYWORD2
+breath		KEYWORD2
 breathe		KEYWORD2
+groupedBreathe	KEYWORD2
+breatheDelay	KEYWORD2

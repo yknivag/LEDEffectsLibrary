@@ -24,7 +24,7 @@ LEDEffect ledeffect(9, 5, 255);
       These values can be adjusted here */
 
   int numberBreaths = 3;
-  int breathDuration = 333;         //Three breaths per second.
+  int breathRate = 180;         //Three breaths per second.
   int numberHeatBeats = 5;
   int heartRate = 85;
 
@@ -34,7 +34,7 @@ void setup()
 
 void loop()
 {
-  /*The heartbeat method takes three optional values:
+  /*The heartbeat() method takes three optional values:
     1. The number of beats to flash (defaults to 1).
        - If using the second value then for the best visual effect this one should be
          divisible by that.
@@ -46,14 +46,12 @@ void loop()
 
   ledeffect.heartbeat(numberHeatBeats, 1, heartRate);
 
-  /*The breathe method takes one optional value:
+  /*The breathe() method takes two optional values:
     1. The value in milliseconds of the total duration of the breath.
-       - If not supplied this will be 5454ms which equates to a standard breathing
-         rate of 11 breaths per minute.
-       - To specify this value from a given breaths per minute call see the slow breaths example.
-       - NB: This is a blocking call and takes the number of milliseconds specified to return. */
+       - If not supplied this will be 1.
+       - NB: This is a blocking call and takes the entire duration to return.
+    2. The breathing rate in breaths per minute.
+       - If not specified this defaults to 11 as an average human respiratory rate. */
 
-  for (int i = 0; i < numberBreaths; i++) {
-    ledeffect.breathe(breathDuration);
-  }
+  breathe(numberBreaths, breathRate);
 }
