@@ -4,8 +4,8 @@
    Created by Gavin Smalley, March 6th 2018.
    Released into the public domain.
 
-   Example 3 - Multiple Effects on different the same LED.
-     Requires an LED (and appropriate resistor) on pin 9.
+   Example 6 - Multiple Effects on different the different LEDs.
+     Requires LEDs (and appropriate resistors) on pins 9 and 10.
    ------------------------------------------------------------------------- */
 
 #include <LEDEffects.h>
@@ -18,6 +18,7 @@
      255, on an ESP8266 the maximum is 1023). It defaults to 255. */
 
 LEDEffect ledeffect(9, 5, 255);
+LEDEffect ledeffect2(10, 5, 255);
 
   /*CPR
       5 heartbeats followed by 3 long breaths, repeated.

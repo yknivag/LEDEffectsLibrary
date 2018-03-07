@@ -4,7 +4,7 @@
    Created by Gavin Smalley, March 6th 2018.
    Released into the public domain.
 
-   Example 1 - Breathing LED
+   Example 2 - Breathing LED
      Requires an LED (and appropriate resistor) on pin 9.
    ------------------------------------------------------------------------- */
 
