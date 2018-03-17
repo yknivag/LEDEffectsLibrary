@@ -134,6 +134,6 @@ Demonstrates how to use the breathe and heartbeat methods together on a single L
 
 Demonstrates how to connect two (or more) independently controlled LEDs.  Note that only one will ever be lit at any given time as each call is blocking.
 
-### 06_Flicker
+### 07_Flicker
 
 In this example the LED will flicker for a few seconds, wait a little and then flicker for ever.  This demostrates the two possible syntaxes.
