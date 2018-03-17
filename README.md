@@ -97,30 +97,43 @@ The breatheDelay() method takes one mandatory and one optional values:
 2. The breathing rate in breaths per minute.
    - If not specified this defaults to 11 as an average human respiratory rate.
 
+### flicker()
+
+*void flicker(int duration = 0);*
+
+The flicker() method takes one optional value:
+1. The value in milliseconds of the total duration of the flickering required.
+   - If the value is ommitted it will run indefinitely.
+   - NB: This is a blocking call and takes the entire duration to return.
+
 ## Examples
 
 There are 6 fully commented examples.
 
-### Heartbeat
+### 01_Heartbeat
 
 Demonstrates the *heartbeat()* method by cycling through a number of possible patterns. Outputs to the serial monitor which example is currently being shown.
 
-### Breath
+### 02_Breath
 
 Demonstrates the *breath()* method with a variety of different breathing options one after another and then breathes indefinitely. Outputs to the serial monitor which example is currently being shown.
 
-### Breathe
+### 03_Breathe
 
 Demonstrates both *breathe()* and *groupedBreathe()* alternatively in a variety of patterns.
 
-### BreatheDelay
+### 04_BreatheDelay
 
 A very simple example, this is a slow version of the blink sketch using *breatheDelay()* instead of *delay()*. It requires 2 LEDs, one to blink and one to breathe. This is not an ideal demostration, but it covers the syntax. A real-life example may be for instance breathing an LED for a given time whilst a motor is running or whilst a door catch is being held open etc.
 
-### CPR
+### 05_CPR
 
 Demonstrates how to use the breathe and heartbeat methods together on a single LED.
 
-### TwoLEDs
+### 06_TwoLEDs
 
 Demonstrates how to connect two (or more) independently controlled LEDs.  Note that only one will ever be lit at any given time as each call is blocking.
+
+### 06_Flicker
+
+In this example the LED will flicker for a few seconds, wait a little and then flicker for ever.  This demostrates the two possible syntaxes.
