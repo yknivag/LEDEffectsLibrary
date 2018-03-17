@@ -32,7 +32,13 @@ void LEDEffect::heartbeat(int flashBeats, int groupedAs, int bpm) {
       delay(periodTime);
     }
     else {
-      int wait = (periodTime * 2) + (groupedAs * periodTime);
+      int wait = 0;
+      if (groupedAs == 1) {
+        wait = (periodTime * 2);
+      }
+      else {
+        wait = (periodTime * 2) + (groupedAs * periodTime);
+      }
       delay(wait);
     }
   }

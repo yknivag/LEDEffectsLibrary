@@ -108,7 +108,7 @@ The flicker() method takes one optional value:
 
 ## Examples
 
-There are 6 fully commented examples.
+There are 7 fully commented examples.
 
 ### 01_Heartbeat
 
