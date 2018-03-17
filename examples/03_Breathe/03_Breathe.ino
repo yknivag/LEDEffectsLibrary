@@ -34,9 +34,9 @@ void loop()
     2. The breathing rate in breaths per minute.
        - If not specified this defaults to 11 as an average human respiratory rate. */
 
-  breathe(10);      // Ten breaths at the default rate
-  breathe(10, 20);  // Ten very fast breaths
-  breathe(5, 6);    // Five very slow breaths
+  ledeffect.breathe(10);      // Ten breaths at the default rate
+  ledeffect.breathe(10, 20);  // Ten very fast breaths
+  ledeffect.breathe(5, 6);    // Five very slow breaths
 
 /* The groupedBreathe() method takes three optional values:
    1. The number of breaths (defaults to 1).
@@ -47,7 +47,7 @@ void loop()
    3. The respiritory rate in breaths per minute (defaults to 11).
       - NB: This is a blocking call, it will return only after ((60000 / bpm) * breaths) milliseconds. */
 
-  groupedBreathe(6);            // Six standard breaths
-  groupedBreathe(6, 2);         // Six standard breaths, grouped in pairs.
-  groupedBreathe(6, 3, 20);     // Six fast breaths, grouped in threes.
+  ledeffect.groupedBreathe(6);            // Six standard breaths
+  ledeffect.groupedBreathe(6, 2);         // Six standard breaths, grouped in pairs.
+  ledeffect.groupedBreathe(6, 3, 20);     // Six fast breaths, grouped in threes.
 }

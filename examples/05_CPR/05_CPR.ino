@@ -24,7 +24,7 @@ LEDEffect ledeffect(9, 5, 255);
       These values can be adjusted here */
 
   int numberBreaths = 3;
-  int breathRate = 180;         //Three breaths per second.
+  int breathRate = 20;
   int numberHeatBeats = 5;
   int heartRate = 85;
 
@@ -53,5 +53,5 @@ void loop()
     2. The breathing rate in breaths per minute.
        - If not specified this defaults to 11 as an average human respiratory rate. */
 
-  breathe(numberBreaths, breathRate);
+  ledeffect.breathe(numberBreaths, breathRate);
 }

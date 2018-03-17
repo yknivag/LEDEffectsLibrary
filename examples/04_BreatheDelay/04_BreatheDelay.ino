@@ -8,9 +8,9 @@
      Requires an LED (and appropriate resistor) on pin 9 and also on the
      LEDBUILTIN pin (13 on a standard Uno).
 
-     The example is simply a copy of the delay() example sketch.  This is not 
+     The example is simply a copy of the delay() example sketch.  This is not
      an ideal demostration, but it covers the syntax. A real-life example may
-     be for instance breathing an LED for a given time whilst a motor is 
+     be for instance breathing an LED for a given time whilst a motor is
      running or whilst a door catch is being held open etc.
    ------------------------------------------------------------------------- */
 
@@ -40,7 +40,7 @@ void loop() {
       - If not specified this defaults to 11 as an average human respiratory rate. */
 
   digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  breatheDelay(1000);                // wait for a second breathing the second LED
+  ledeffect.breatheDelay(12000, 12);                // wait for 12 seconds (breathing the second LED)
   digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  breatheDelay(1000, 6);             // wait for a second breathing the second LES (we use a lower respiration rate this time.
+  ledeffect.breatheDelay(6000, 6);             // wait for 6 seconds (breathing the second LED) (we use a lower respiration rate this time.
 }

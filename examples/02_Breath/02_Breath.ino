@@ -33,18 +33,18 @@ void setup()
   //Single Breath
   Serial.println("Standard Breath");
   ledeffect.breath();
-  delay (250);
+  delay (500);
 
   //Fast Breath
-  Serial.print("Fast Breath");
+  Serial.println("Fast Breath");
   ledeffect.breath(2000);
-  delay (250);
+  delay (500);
 
   //Slow Breath
   Serial.println("Slow Breath (5bpm)");
   int duration = 60000 / 5;         //Number of milliseconds in a minute divided by number of breaths per minute.
   ledeffect.breath(duration);
-  delay (250);
+  delay (500);
 
   //Continuous Breathing will now run in the loop
   Serial.println("Continuous Breathing - reset Arduino to repeat.");

@@ -54,5 +54,5 @@ void loop()
     2. The breathing rate in breaths per minute.
        - If not specified this defaults to 11 as an average human respiratory rate. */
 
-  breathe(numberBreaths, breathRate);
+  ledeffect2.breathe(numberBreaths, breathRate);
 }

@@ -17,6 +17,7 @@ class LEDEffect
     void breathe(int breaths = 1, int bpm = 11);
     void groupedBreathe(int breaths = 1, int groupedAs = 1, int bpm = 11);
     void breatheDelay(int duration, int bpm = 11);
+    void flicker(int duration = 0);
   private:
     int _pin;
     int _pwmMin;

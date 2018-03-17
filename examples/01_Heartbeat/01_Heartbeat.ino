@@ -39,20 +39,20 @@ void loop()
   //Single Beat
   Serial.println("Single Beat");
   ledeffect.heartbeat();
-  delay (250);
+  delay (500);
 
   //Double Beat
   Serial.println("Double Beat");
   ledeffect.heartbeat(2,2);
-  delay (250);
+  delay (500);
 
   //Fast Beats
   Serial.println("6 Fast Beats (85bpm)");
   ledeffect.heartbeat(6, 1, 85);
-  delay (250);
+  delay (500);
 
   //Fast Double Beats
   Serial.println("6 Fast Beats (85bpm) Grouped as doubles");
   ledeffect.heartbeat(6, 2, 85);
-  delay (250);
+  delay (1000);
 }

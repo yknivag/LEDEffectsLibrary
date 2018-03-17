@@ -4,3 +4,4 @@ breath		KEYWORD2
 breathe		KEYWORD2
 groupedBreathe	KEYWORD2
 breatheDelay	KEYWORD2
+flicker KEYWORD2
